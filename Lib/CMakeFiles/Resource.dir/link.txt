@@ -1,0 +1,2 @@
+/usr/bin/ar qc libResource.a  CMakeFiles/Resource.dir/resource.cpp.o CMakeFiles/Resource.dir/JSON.cpp.o
+/usr/bin/ranlib libResource.a

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/MN_v01/Lib/ACP.cpp
+ACP.h
+/home/pi/MN_v01/Lib/ACP.h
+
+/home/pi/MN_v01/Lib/ACP.h
+iostream
+-
+string
+-
+list
+-
+

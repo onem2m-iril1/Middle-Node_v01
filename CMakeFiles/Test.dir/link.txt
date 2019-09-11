@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/Test.dir/test.o  -o Test  -L/home/pi/MN_v01/Lib -rdynamic Lib/libResource.a Lib/libACP.a -lpaho-mqtt3c -lsqlite3 

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libACP.a  CMakeFiles/ACP.dir/ACP.cpp.o
+/usr/bin/ranlib libACP.a

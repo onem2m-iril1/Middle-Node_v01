@@ -1,0 +1,7 @@
+/home/pi/MN_v01/CMakeFiles/rebuild_cache.dir
+/home/pi/MN_v01/CMakeFiles/edit_cache.dir
+/home/pi/MN_v01/CMakeFiles/Test.dir
+/home/pi/MN_v01/Lib/CMakeFiles/rebuild_cache.dir
+/home/pi/MN_v01/Lib/CMakeFiles/edit_cache.dir
+/home/pi/MN_v01/Lib/CMakeFiles/ACP.dir
+/home/pi/MN_v01/Lib/CMakeFiles/Resource.dir

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/Desktop/Test/Lib/JSON.cpp
+JSON.h
+/home/pi/Desktop/Test/Lib/JSON.h
+stdlib.h
+-
+stdio.h
+-
+
+/home/pi/Desktop/Test/Lib/JSON.h
+string
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
