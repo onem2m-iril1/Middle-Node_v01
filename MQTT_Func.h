@@ -1,8 +1,18 @@
-#define ADDRESS     "tcp://192.168.0.113:1883"
+#define TLS
+#define TLS_PSK
+//#define TLS_CERT
+
+#define ADDRESS     "tcp://192.168.0.61:1883"
+
+#ifdef TLS_PSK
+#define ADDRESS     "ssl://192.168.0.61:8883"
+#endif
+
 #define CLIENTID    "MiddleNode"
 #define QOS         1
 #define TIMEOUT     10000L
 
+static int id = 0;
 static volatile bool isMessageArrived = false;
 
 /* Buffer size for a receiving message. */

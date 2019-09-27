@@ -12,6 +12,8 @@ std::string con, cnf;
 std::string nu;
 std::string sur;
 int net, nct;
+char t1[30];
+
 
 extern struct Resource RES;
 extern struct regularResource regRES;

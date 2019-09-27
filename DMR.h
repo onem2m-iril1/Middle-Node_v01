@@ -7,6 +7,46 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
    return 0;
 }
 
+static int retrive_ae(void *NotUsed, int argc, char **argv, char **azColName) {
+   int i;
+   for(i = 0; i<argc; i++) {
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+      if (i == 0) aei = argv[i];
+      if (i == 1) api = argv[i];
+      if (i == 2) rn = argv[i];
+      if (i == 3) rr = argv[i];
+   }
+   printf(" \n");
+   return 0;
+}
+
+static int retrive_cont(void *NotUsed, int argc, char **argv, char **azColName) {
+   int i;
+   for(i = 0; i<argc; i++) {
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+      if (i == 0) rn = argv[i];
+      if (i == 1) _to = argv[i];
+      if (i == 2) rqi = argv[i];
+   }
+   printf(" \n");
+   return 0;
+}
+
+static int retrive_sub(void *NotUsed, int argc, char **argv, char **azColName) {
+   int i;
+   for(i = 0; i<argc; i++) {
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+      if (i == 0) rn = argv[i];
+      if (i == 1) rqi = argv[i];
+      if (i == 2) nu = argv[i];
+      if (i == 3) net = std::stoi(argv[i]);
+      if (i == 4) nct = std::stoi(argv[i]);
+      if (i == 5) _to = argv[i];
+   }
+   printf(" \n");
+   return 0;
+}
+
 void CreateTables(sqlite3 *db)
 {
 	int rc;
@@ -20,7 +60,9 @@ void CreateTables(sqlite3 *db)
       "aei TEXT PRIMARY KEY     NOT NULL," \
       "api           TEXT    NOT NULL," \
       "rn            TEXT     NOT NULL," \
-      "rr        BOOLEAN );";
+      "rr            BOOLEAN     NOT NULL," \
+      "ct            TEXT     NOT NULL," \
+      "lt        TEXT NOT NULL);";
       
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
    
@@ -37,6 +79,8 @@ void CreateTables(sqlite3 *db)
       "rn		TEXT	PRIMARY KEY	NOT NULL," \
       "_to	TEXT     NOT NULL," \
       "rqi        TEXT	NOT NULL,"\
+      "ct            TEXT     NOT NULL," \
+      "lt            TEXT     NOT NULL," \
        "FOREIGN KEY (_to) REFERENCES Registration(aei) ON DELETE CASCADE);";
       
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -54,6 +98,8 @@ void CreateTables(sqlite3 *db)
       "con            TEXT     NOT NULL," \
       "cnf TEXT     NOT NULL," \
       "_to        TEXT		NOT NULL,"\
+      "ct            TEXT     NOT NULL," \
+      "lt            TEXT     NOT NULL," \
        "FOREIGN KEY (_to) REFERENCES Container(rn) ON DELETE CASCADE);";
       
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -73,6 +119,8 @@ void CreateTables(sqlite3 *db)
       "net INT     NOT NULL," \
       "nct INT     NOT NULL," \
       "_to        TEXT		NOT NULL,"\
+      "ct            TEXT     NOT NULL," \
+      "lt            TEXT     NOT NULL," \
        "FOREIGN KEY (_to) REFERENCES Container(rn) ON DELETE CASCADE);";
       
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);

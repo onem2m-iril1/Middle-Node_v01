@@ -16,5 +16,5 @@ add_subdirectory(Lib)
 
 ADD_EXECUTABLE(Test test.cpp)
 
-TARGET_LINK_LIBRARIES(Test Resource ACP paho-mqtt3c sqlite3)
+TARGET_LINK_LIBRARIES(Test Resource ACP paho-mqtt3cs sqlite3)
                 
