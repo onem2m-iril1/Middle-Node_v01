@@ -75,7 +75,7 @@ $ cmake .
 
 ## System Architechture
 
-image.png
+![Alt text](image.png?raw=true "System Architechture")
 
 ## Authors
 
