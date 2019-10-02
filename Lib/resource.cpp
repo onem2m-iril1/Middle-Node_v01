@@ -3,7 +3,7 @@
 #include "resource.h"
 #include "JSON.h"
 
-void process_crt(MbedJSONValue& MSG, MbedJSONValue& MSG_1);
+void process_crt(MbedJSONValue& MSG, MbedJSONValue& MSG_1, MbedJSONValue& MSG_2);
 void process_rsc(MbedJSONValue& MSG, MbedJSONValue& MSG_1);
 void process_dlt(MbedJSONValue& MSG);
 void process_updt(MbedJSONValue& MSG);
@@ -81,8 +81,8 @@ std::string Notify(Request Req)
 	MbedJSONValue demo, demo2, demo3, demo4, demo5, demo6;
 	std::string s;
 
-	demo6["con"] = Ntfy.contentInfo;
-	demo6["conf"] = Ntfy.content;
+	demo6["con"] = Ntfy.content;
+	demo6["conf"] = Ntfy.contentInfo;
 
 	demo5["cin"] = demo6;
 	demo4["rep"] = demo5;
@@ -92,8 +92,9 @@ std::string Notify(Request Req)
 
 	demo["fr"] = Req.From;
 	demo["op"] = Req.Operation;
-	demo["pc"] = demo2;
 	demo2["m2m:sgn"] = demo3;
+	demo["pc"] = demo2;
+	
 
 	demo["rqi"] = Req.Request_Identifier;
 	demo["to"] = Req.To;
@@ -133,13 +134,35 @@ std::string Delete_Resp(Response Resp)
 //////////////////////////////////////////////
 std::string Retrive_Resp(Response Resp)
 {
-	MbedJSONValue demo;
+	MbedJSONValue demo, demo2, demo3;
 	std::string s;
 	demo["rsc"] = Resp.responseStatusCode;
 	demo["rqi"] = Resp.Request_Identifier;
+	if(aei != "NULL"){
+		demo3["api"] = api;
+		demo3["rn"] = rn;
+		demo3["rr"] = rr;
+		demo2["m2m:ae"] = demo3;
+	}
 	demo["to"] = Resp.To;
 	demo["fr"] = Resp.From;
+	demo["pc"] = demo2;
+	
+	//serialize it into a JSON string
+	s = demo.serialize();
+	printf("\nMSG SIZE: %d\n", s.length());
+	printf("RESP JSON: %s\r\n", s.c_str());
+	return s;
+}
 
+std::string Retrive_Req(Request Req){
+	MbedJSONValue demo;
+	std::string s;
+	demo["op"] = Req.Operation;
+	demo["rqi"] = Req.Request_Identifier;
+	demo["to"] = Req.To;
+	demo["fr"] = Req.From;
+	
 	//serialize it into a JSON string
 	s = demo.serialize();
 	printf("\nMSG SIZE: %d\n", s.length());
@@ -194,6 +217,15 @@ std::string Create_Resp(Response Resp)
 		demo3["con"] = RCin.content;
 		demo2["m2m:cin"] = demo3;
 		break;
+	/*case 13:
+		demo2["mmt"] = RES.memoryTotal;
+		demo2["mma"] = RES.memoryAvailabe;
+		demo2["ri"] = RES.resourceID;
+		demo2["pi"] = RES.parentID;
+		demo2["ct"] = RES.creationTime;       //ct     1
+		demo2["et"] = RES.expirationTime;     //et     1  
+		demo2["rn"] = RES.resourceName;
+		break;*/
 	case 23:
 		demo3["et"] = ancsubRES.expirationTime;
 		demo4["net"] = RSub.notificationEventType;
@@ -219,7 +251,7 @@ std::string Create_Resp(Response Resp)
 
 void process_msg(const char* Buffer)
 {
-	MbedJSONValue MSG, MSG_1;
+	MbedJSONValue MSG, MSG_1, MSG_2;
 	
 	printf("\nBuffer in process msg: %s\n", Buffer);
 	parse(MSG, Buffer);
@@ -257,7 +289,7 @@ void process_msg(const char* Buffer)
 		delete temp1;
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 	////////////////////////From parameter (Mendatory parameter[optional for Create AE])//////////
@@ -268,7 +300,7 @@ void process_msg(const char* Buffer)
 		printf("From: %s\r\n", From.c_str());
 	}
 	else {
-		//add Response Status Code for no mendatory parameter BAD_REQUEST 
+		rsc = 4000;			//Response Status Code for no mendatory parameter BAD_REQUEST 
 		return;
 	}
 	////////////////////////Request Identifier (Mendatory parameter)//////////////////////
@@ -279,7 +311,7 @@ void process_msg(const char* Buffer)
 		printf("Request Identifier: %s\r\n", rqi.c_str());
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 	////////////////////////Operation Parameter (Mendatory parameter)//////////////////////
@@ -303,12 +335,12 @@ void process_msg(const char* Buffer)
 			goto exit;
 		}
 		if (op == 1){
-			process_crt(MSG, MSG_1);
+			process_crt(MSG, MSG_1, MSG_2);
 			goto exit;
 		}
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 	
@@ -318,7 +350,7 @@ void process_msg(const char* Buffer)
 	return;
 }
 
-void process_crt(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
+void process_crt(MbedJSONValue& MSG, MbedJSONValue& MSG_1, MbedJSONValue& MSG_2)
 {
 	
 	////////////////////////resource Type Parameter (Mendatory parameter)//////////////////////
@@ -332,7 +364,7 @@ void process_crt(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
 		printf("Content: %s\r\n", content);
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 
@@ -413,8 +445,8 @@ void process_crt(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
 	{
 		nct = MSG_1["nct"].get<int>();
 		printf("NotificationContentType: %d\r\n", nct);
-		MbedJSONValue& MSG_2 = MSG_1["m2m:sub"]["enc"];
-		
+		MSG_2 = MSG["pc"]["m2m:sub"]["enc"];
+
 		if (MSG_2.hasMember("net"))
 		{
 			net = MSG_2["net"].get<int>();
@@ -455,7 +487,7 @@ void process_rsc(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
 		printf("Request Identifier: %s\r\n", rqi.c_str());
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 	
@@ -465,7 +497,7 @@ void process_rsc(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
 		printf("To: %s\r\n", to.c_str());
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 
@@ -475,7 +507,7 @@ void process_rsc(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
 		printf("From: %s\r\n", From.c_str());
 	}
 	else {
-		//add response code for no mendatory parameter
+		rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 	printf("Content: %s\r\n", content);
@@ -489,7 +521,7 @@ void process_rsc(MbedJSONValue& MSG, MbedJSONValue& MSG_1)
 		//printf("ResourceType in response: %s\r\n", resourceType.c_str());
 	}
 	else {
-		//add response code for no mendatory parameter
+		//rsc = 4000;			//response code for no mendatory parameter
 		return;
 	}
 

@@ -53,6 +53,39 @@ void CreateTables(sqlite3 *db)
     char *zErrMsg = 0;
     char *sql;
     
+    // Drop if Exits
+    sql = "DROP TABLE Registration";
+    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+    if( rc != SQLITE_OK ){
+       fprintf(stderr, "SQL error: %s\n", zErrMsg);
+       sqlite3_free(zErrMsg);
+    } 
+    else        fprintf(stdout, "Registration Table Dropped successfully\n");
+    sql = "DROP TABLE Container";
+    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+    if( rc != SQLITE_OK ){
+       fprintf(stderr, "SQL error: %s\n", zErrMsg);
+       sqlite3_free(zErrMsg);
+    } 
+    else        fprintf(stdout, "Container Table Dropped successfully\n");
+    sql = "DROP TABLE ContentInstance";
+    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+    if( rc != SQLITE_OK ){
+       fprintf(stderr, "SQL error: %s\n", zErrMsg);
+       sqlite3_free(zErrMsg);
+    } 
+    else        fprintf(stdout, "ContentInstance Table Dropped successfully\n");
+    sql = "DROP TABLE Subscription";
+    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+    if( rc != SQLITE_OK ){
+       fprintf(stderr, "SQL error: %s\n", zErrMsg);
+       sqlite3_free(zErrMsg);
+    } 
+    else        fprintf(stdout, "Subscription Table Dropped successfully\n");
     
     //Create Registration Table
     

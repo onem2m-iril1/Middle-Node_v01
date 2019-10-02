@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPEP.a  CMakeFiles/PEP.dir/PEP.cpp.o
+/usr/bin/ranlib libPEP.a

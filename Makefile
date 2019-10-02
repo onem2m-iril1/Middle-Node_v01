@@ -111,30 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Test
+# Target rules for targets named MiddleNode
 
 # Build rule for target.
-Test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Test
-.PHONY : Test
+MiddleNode: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MiddleNode
+.PHONY : MiddleNode
 
 # fast build rule for target.
-Test/fast:
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/build
-.PHONY : Test/fast
-
-#=============================================================================
-# Target rules for targets named ACP
-
-# Build rule for target.
-ACP: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ACP
-.PHONY : ACP
-
-# fast build rule for target.
-ACP/fast:
-	$(MAKE) -f Lib/CMakeFiles/ACP.dir/build.make Lib/CMakeFiles/ACP.dir/build
-.PHONY : ACP/fast
+MiddleNode/fast:
+	$(MAKE) -f CMakeFiles/MiddleNode.dir/build.make CMakeFiles/MiddleNode.dir/build
+.PHONY : MiddleNode/fast
 
 #=============================================================================
 # Target rules for targets named Resource
@@ -149,20 +136,46 @@ Resource/fast:
 	$(MAKE) -f Lib/CMakeFiles/Resource.dir/build.make Lib/CMakeFiles/Resource.dir/build
 .PHONY : Resource/fast
 
+#=============================================================================
+# Target rules for targets named PEP
+
+# Build rule for target.
+PEP: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PEP
+.PHONY : PEP
+
+# fast build rule for target.
+PEP/fast:
+	$(MAKE) -f Lib/CMakeFiles/PEP.dir/build.make Lib/CMakeFiles/PEP.dir/build
+.PHONY : PEP/fast
+
+#=============================================================================
+# Target rules for targets named ACP
+
+# Build rule for target.
+ACP: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ACP
+.PHONY : ACP
+
+# fast build rule for target.
+ACP/fast:
+	$(MAKE) -f Lib/CMakeFiles/ACP.dir/build.make Lib/CMakeFiles/ACP.dir/build
+.PHONY : ACP/fast
+
 # target to build an object file
-test.o:
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/test.o
-.PHONY : test.o
+MiddleNode.o:
+	$(MAKE) -f CMakeFiles/MiddleNode.dir/build.make CMakeFiles/MiddleNode.dir/MiddleNode.o
+.PHONY : MiddleNode.o
 
 # target to preprocess a source file
-test.i:
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/test.i
-.PHONY : test.i
+MiddleNode.i:
+	$(MAKE) -f CMakeFiles/MiddleNode.dir/build.make CMakeFiles/MiddleNode.dir/MiddleNode.i
+.PHONY : MiddleNode.i
 
 # target to generate assembly for a file
-test.s:
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/test.s
-.PHONY : test.s
+MiddleNode.s:
+	$(MAKE) -f CMakeFiles/MiddleNode.dir/build.make CMakeFiles/MiddleNode.dir/MiddleNode.s
+.PHONY : MiddleNode.s
 
 # Help Target
 help:
@@ -172,12 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Test"
-	@echo "... ACP"
+	@echo "... MiddleNode"
 	@echo "... Resource"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... PEP"
+	@echo "... ACP"
+	@echo "... MiddleNode.o"
+	@echo "... MiddleNode.i"
+	@echo "... MiddleNode.s"
 .PHONY : help
 
 

@@ -14,6 +14,7 @@ extern std::string From, csi, api, poa, to, rqi, aei, rn;
 extern std::string con, cnf;
 extern std::string nu;
 extern int net, nct;
+extern char t1[30];
 
 extern void resource_type();
 extern void Operation_Type();
@@ -150,6 +151,8 @@ std::string Create_Resp(Response Resp);
 std::string Delete_Resp(Response Resp);
 
 std::string Retrive_Resp(Response Resp);
+
+std::string Retrive_Req(Request Req);
 
 void process_msg(const char* Buffer);
 

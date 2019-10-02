@@ -2,9 +2,15 @@
 #define TLS_PSK
 //#define TLS_CERT
 
+//#ifdefine TLS
+//    #ifndef TLS_CERT
+//        #define TLS_PSK
+//    #endif
+//#endif
+
 #define ADDRESS     "tcp://192.168.0.61:1883"
 
-#ifdef TLS_PSK
+#ifdef TLS
 #define ADDRESS     "ssl://192.168.0.61:8883"
 #endif
 
@@ -19,10 +25,8 @@ static volatile bool isMessageArrived = false;
 const int MESSAGE_BUFFER_SIZE = 512;
 /* Buffer for a receiving message. */
 char messageBuffer[MESSAGE_BUFFER_SIZE];
-
-//char buf[MESSAGE_BUFFER_SIZE];
-
-char TOPIC[40] = "TEST";
+/* MQTT TOPIC */
+char TOPIC[40];
 volatile MQTTClient_deliveryToken deliveredtoken;
 
 void create_Topic(char* tpc_ty, char* orignator, char* receiver);
@@ -50,13 +54,7 @@ int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *m
     printf("Message arrived\n");
     printf("     topic: %s\n", topicName);
     printf("   message: %s",message->payload);
-
     strcpy(messageBuffer, (const char*)message->payload);
-    /*for(i=0; i<message->payloadlen; i++)
-    {
-        putchar(*payloadptr++);
-    }*/
-    putchar('\n');
     MQTTClient_freeMessage(&message);
     MQTTClient_free(topicName);
     return 1;

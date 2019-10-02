@@ -33,7 +33,8 @@ extern struct notify Ntfy;
 const char* CSE_ID = "cse01";
 const char* AE_ID;
 bool lcl;
-bool notify;
+bool _notify;
+bool MGOJB, Restart;
 bool CreateAE;
 
 void resource_type();

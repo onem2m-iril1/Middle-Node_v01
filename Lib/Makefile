@@ -111,21 +111,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Lib/CMakeFiles/ACP.dir/rule:
-	cd /home/pi/MN_v01 && $(MAKE) -f CMakeFiles/Makefile2 Lib/CMakeFiles/ACP.dir/rule
-.PHONY : Lib/CMakeFiles/ACP.dir/rule
-
-# Convenience name for target.
-ACP: Lib/CMakeFiles/ACP.dir/rule
-
-.PHONY : ACP
-
-# fast build rule for target.
-ACP/fast:
-	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/ACP.dir/build.make Lib/CMakeFiles/ACP.dir/build
-.PHONY : ACP/fast
-
-# Convenience name for target.
 Lib/CMakeFiles/Resource.dir/rule:
 	cd /home/pi/MN_v01 && $(MAKE) -f CMakeFiles/Makefile2 Lib/CMakeFiles/Resource.dir/rule
 .PHONY : Lib/CMakeFiles/Resource.dir/rule
@@ -139,6 +124,36 @@ Resource: Lib/CMakeFiles/Resource.dir/rule
 Resource/fast:
 	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/Resource.dir/build.make Lib/CMakeFiles/Resource.dir/build
 .PHONY : Resource/fast
+
+# Convenience name for target.
+Lib/CMakeFiles/PEP.dir/rule:
+	cd /home/pi/MN_v01 && $(MAKE) -f CMakeFiles/Makefile2 Lib/CMakeFiles/PEP.dir/rule
+.PHONY : Lib/CMakeFiles/PEP.dir/rule
+
+# Convenience name for target.
+PEP: Lib/CMakeFiles/PEP.dir/rule
+
+.PHONY : PEP
+
+# fast build rule for target.
+PEP/fast:
+	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/PEP.dir/build.make Lib/CMakeFiles/PEP.dir/build
+.PHONY : PEP/fast
+
+# Convenience name for target.
+Lib/CMakeFiles/ACP.dir/rule:
+	cd /home/pi/MN_v01 && $(MAKE) -f CMakeFiles/Makefile2 Lib/CMakeFiles/ACP.dir/rule
+.PHONY : Lib/CMakeFiles/ACP.dir/rule
+
+# Convenience name for target.
+ACP: Lib/CMakeFiles/ACP.dir/rule
+
+.PHONY : ACP
+
+# fast build rule for target.
+ACP/fast:
+	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/ACP.dir/build.make Lib/CMakeFiles/ACP.dir/build
+.PHONY : ACP/fast
 
 ACP.o: ACP.cpp.o
 
@@ -194,6 +209,33 @@ JSON.cpp.s:
 	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/Resource.dir/build.make Lib/CMakeFiles/Resource.dir/JSON.cpp.s
 .PHONY : JSON.cpp.s
 
+PEP.o: PEP.cpp.o
+
+.PHONY : PEP.o
+
+# target to build an object file
+PEP.cpp.o:
+	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/PEP.dir/build.make Lib/CMakeFiles/PEP.dir/PEP.cpp.o
+.PHONY : PEP.cpp.o
+
+PEP.i: PEP.cpp.i
+
+.PHONY : PEP.i
+
+# target to preprocess a source file
+PEP.cpp.i:
+	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/PEP.dir/build.make Lib/CMakeFiles/PEP.dir/PEP.cpp.i
+.PHONY : PEP.cpp.i
+
+PEP.s: PEP.cpp.s
+
+.PHONY : PEP.s
+
+# target to generate assembly for a file
+PEP.cpp.s:
+	cd /home/pi/MN_v01 && $(MAKE) -f Lib/CMakeFiles/PEP.dir/build.make Lib/CMakeFiles/PEP.dir/PEP.cpp.s
+.PHONY : PEP.cpp.s
+
 resource.o: resource.cpp.o
 
 .PHONY : resource.o
@@ -228,15 +270,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... ACP"
 	@echo "... Resource"
+	@echo "... PEP"
+	@echo "... ACP"
+	@echo "... edit_cache"
 	@echo "... ACP.o"
 	@echo "... ACP.i"
 	@echo "... ACP.s"
 	@echo "... JSON.o"
 	@echo "... JSON.i"
 	@echo "... JSON.s"
+	@echo "... PEP.o"
+	@echo "... PEP.i"
+	@echo "... PEP.s"
 	@echo "... resource.o"
 	@echo "... resource.i"
 	@echo "... resource.s"

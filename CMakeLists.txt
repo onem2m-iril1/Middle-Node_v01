@@ -14,7 +14,11 @@ ENDIF()
 
 add_subdirectory(Lib)
 
-ADD_EXECUTABLE(Test test.cpp)
+ADD_EXECUTABLE(MiddleNode MiddleNode.cpp)
 
-TARGET_LINK_LIBRARIES(Test Resource ACP paho-mqtt3cs sqlite3)
+TARGET_LINK_LIBRARIES(MiddleNode Resource PEP ACP paho-mqtt3cs sqlite3 ssl crypto)
+
+
+
+
                 
