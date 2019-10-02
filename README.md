@@ -78,7 +78,7 @@ $ ./MiddleNode
 
 ### System Architechture
 
-![Alt text](image.png?raw=true "System Architechture")
+![Alt text](SystemArchitechture.jpg?raw=true "System Architechture")
 
 ## Authors
 
