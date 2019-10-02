@@ -66,14 +66,17 @@ To connect with MQTT Broker change the ADDRESS macro to the URL of the MQTT Brok
 
 ### Installing
 
-Build the file in current directory using the command 
+Build and run the program in current directory using following commands 
 
 ```
 $ cd Middle-Node_v01
 $ cmake .
+$ make
+$ ./MiddleNode
 ``` 
 
-## System Architechture
+
+### System Architechture
 
 ![Alt text](image.png?raw=true "System Architechture")
 
@@ -81,15 +84,12 @@ $ cmake .
 
 * **Muhammad Ahsan** - *Initial work* - [mahsan321](https://github.com/mahsan321)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
 ## License
 
+KICS UET
 
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+## Team Members
+Muhammad Ahsan
+Bilal Imran
+Asim Tanwir
+Muhammad Rehan
