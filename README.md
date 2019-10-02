@@ -73,6 +73,9 @@ $ cd Middle-Node_v01
 $ cmake .
 ``` 
 
+## System Architechture
+
+image.png
 
 ## Authors
 
