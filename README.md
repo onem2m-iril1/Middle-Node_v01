@@ -22,7 +22,7 @@ sqlite3 DataBase
 Run following command to install sqlite3 DB
 
 ```
-$ sudo apt-get install sqlite3
+$ sudo apt-get install libsqlite3-dev
 ```
 
 CMake is used to create Makefile
