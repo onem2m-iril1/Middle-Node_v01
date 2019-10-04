@@ -51,7 +51,7 @@ Before Installation, configure the project to run using one of the following pro
 
 * TCP
 * TLS over TCP using Certificate
-* TLS over TCP using Pre Shared key
+* TLS over TCP using Pre-Shared key
 
 This can be done by commenting or uncommenting the macros defined in MQTT_func.h file 
 
