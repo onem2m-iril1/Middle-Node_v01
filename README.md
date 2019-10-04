@@ -1,9 +1,9 @@
 # OneM2M Middle Node
 
-MiddleNode in compliance with OneM2M provides the following functionalities
+MiddleNode in accordance with OneM2M provides the following functionalities
 - Security Association and Establishment
 	- Certificate Based
-	- Pre Shared Key Based
+	- Pre-Shared Key Based
 - Device Registration
 - Secure MQTT Binding
 - Container and Content Instance Resource Management
@@ -18,15 +18,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-sqlite3 DataBase
 Run following command to install sqlite3 DB
 
 ```
 $ sudo apt-get install libsqlite3-dev
 ```
 
-CMake is used to create Makefile
-In Debian based system following command is run to install the CMake package 
+Run the following command to install CMake package for Debian based system  
 ```
 $ sudo apt-get install build-essential gcc make cmake cmake-gui cmake-curses-gui
 ```
