@@ -29,13 +29,12 @@ Run the following command to install CMake package for Debian based system
 $ sudo apt-get install build-essential gcc make cmake cmake-gui cmake-curses-gui
 ```
 
-Install OpenSSL Library using the following command
+Install OpenSSL library package using the following command
 ```
 $ sudo apt-get install libssl-dev
 ```
 
-PAHO MQTT Client
-Run following command to install
+Run following command to install PAHO MQTT Client
 ```
 $ git clone https://github.com/eclipse/paho.mqtt.c.git
 $ cd paho.mqtt.c
