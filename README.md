@@ -47,11 +47,11 @@ $ sudo ldconfig
 
 ### Configuration
 
-Before Installation configure the project to run on one of the following protocols
+Before Installation, configure the project to run using one of the following protocols
 
-TCP
-TLS/TCP using Certificate
-TLS/TCP using Pre Shared key
+* TCP
+* TLS over TCP using Certificate
+* TLS over TCP using Pre Shared key
 
 This can be done by commenting or uncommenting the macros defined in MQTT_func.h file 
 
